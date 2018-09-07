@@ -1,0 +1,19 @@
+CREATE TABLE users(
+  id  integer primary key ,
+  firstname varchar(50),
+  lastname varchar(50)
+);
+select * from users;
+alter table users
+    add column is_admin integer;
+alter table users
+    alter column is_admin set data type boolean Using is_admin::boolean;
+
+CREATE TABLE tasks(
+  id integer primary key ,
+  name varchar(50),
+  user_id integer
+);
+alter TABLE users add constraint primarykey_tmp PRIMARY KEY (id);
+DROP TABLE tasks;
+DROP database lab1;
