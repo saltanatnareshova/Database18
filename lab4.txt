@@ -1,0 +1,32 @@
+CREATE DATAbase lab5;
+Create table customers(
+  costumer_id integer primary key ,
+  cust_name varchar(255),
+  city varchar(255),
+  grade integer,
+  salesman_id integer references salesman(salesman_id)
+);
+select * from customers;
+create table orders(
+  order_no int primary key,
+  purch_amnt float ,
+  costumer_id int references costumer(costumer_id),
+  salesmanid int references salesman(salesman_id)
+);
+
+create table salesman(
+  salesman_id int primary key ,
+  name varchar(255),
+  city varchar(255) references costumers(city),
+  comission float
+);
+select sum(purch_amnt) from orders;
+select avg(purch_amnt) from orders;
+select count(cust_name) where cust_name not null;
+select min(purch_amnt) from orders;
+select * from customers where cust_name like '%b';
+select * from orders where costumer_id  in (select costumer_id from costumers where city ='New York');
+select * from customers where costumer_id in(select costumer_id from orders where purch_amnt >10);
+SELECT sum(grade) AS "total_grade" FROM customers;
+select * from customers where cust_name not null;
+select max(grade) from customers;
